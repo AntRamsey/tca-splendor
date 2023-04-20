@@ -1,11 +1,16 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { useNavigate } from 'react-router-dom'
 
 export const Home = () => {
+
+    const nav = useNavigate();
+
     return (
     <>
       <Button 
         variant="outline-primary"
+        onClick={() => nav("/setup")}
       >
         Play Splendor
       </Button>
