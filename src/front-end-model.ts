@@ -16,6 +16,7 @@ export interface LeaderboardPlayer {
 export interface SetupInfo {
     start: string;
     chosenPlayers: string[];
+    scoreToWin: number;
 };
 
 export type GetPreviousPlayersFunc = (results: GameResult[]) => string[];

@@ -24,6 +24,8 @@ export const Setup: React.FC<SetupProps> = ({
 
     const [newPlayerName, setNewPlayerName] = useState("");
 
+    const [scoreToWin, setScoreToWin] = useState(15);
+
     const togglePlayer = (name: string) => setChosenPlayers(
         chosenPlayers.map(x => ({
             ...x
@@ -37,6 +39,7 @@ export const Setup: React.FC<SetupProps> = ({
             , chosenPlayers: chosenPlayers
                 .filter(x => x.checked)
                 .map(x => x.name)
+            , scoreToWin: scoreToWin
         });
         nav("/play");
     };
@@ -80,7 +83,7 @@ export const Setup: React.FC<SetupProps> = ({
                 className='mt-5'
             >
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                    <Form.Label>Email address</Form.Label>
+                    <Form.Label>New player</Form.Label>
                     <Form.Control 
                         type="text" 
                         placeholder="Enter a new player name"
@@ -103,6 +106,17 @@ export const Setup: React.FC<SetupProps> = ({
                         />
                     ))
                 }
+                <hr />
+                <Form.Label>Winning score?</Form.Label>
+                <Form.Select
+                    value={scoreToWin}
+                    onChange={(e) => setScoreToWin(Number(e.target.value))}
+                >
+                    <option value={10}>10</option>
+                    <option value={15}>15</option>
+                    <option value={20}>20</option>
+                    <option value={25}>25</option>
+                </Form.Select>
             </Form>
         </>
     )

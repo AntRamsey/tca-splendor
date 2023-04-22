@@ -59,6 +59,7 @@ const App = () => {
   const [setupInfo, setSetupInfo] = useState<SetupInfo>({
     start: ""
     , chosenPlayers: []
+    , scoreToWin: 15
   });
 
   const addGameResult = (r: GameResult) => {
