@@ -14,7 +14,9 @@ import {
 
 import { 
   GameResult
+  , SetupInfo
   , calculateLeaderboard
+  , getPreviousPlayers
  } from './front-end-model'
 
 
@@ -54,6 +56,11 @@ const App = () => {
 
   const [results, setGameResults] = useState(hardcodedGameResults);
 
+  const [setupInfo, setSetupInfo] = useState<SetupInfo>({
+    start: ""
+    , chosenPlayers: []
+  });
+
   const addGameResult = (r: GameResult) => {
     setGameResults([
       ...results
@@ -80,12 +87,20 @@ const App = () => {
               />
             } 
           />
-          <Route path='/setup' element={<Setup />} />
+          <Route 
+            path='/setup'
+            element={
+            <Setup
+              previousPlayers={getPreviousPlayers(results)}
+              setSetupInfo={setSetupInfo}
+            />} 
+          />
           <Route
             path='/play'
             element={
               <Play 
                 addGameResultFunc={addGameResult}
+                setupInfo={setupInfo}
               />
             } 
           />

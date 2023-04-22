@@ -1,20 +1,28 @@
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom'
-import { GameResult } from './front-end-model';
+import { GameResult, SetupInfo } from './front-end-model';
+import Form from 'react-bootstrap/Form';
+
 
 interface PlayProps {
     addGameResultFunc: (r: GameResult) => void;
+    setupInfo: SetupInfo;
 };
 
-export const Play: React.FC<PlayProps> = ({addGameResultFunc}) => {
+export const Play: React.FC<PlayProps> = ({
+    addGameResultFunc
+    , setupInfo
+}) => {
+
+    console.log(setupInfo);
 
     const nav = useNavigate();
 
-    const endGame = () => {
+    const endGame = (winner: string) => {
 
         addGameResultFunc({
-            winner: "Larry"
-            , players: ["Larry", "Curly", "Moe"]
+            winner: winner
+            , players: setupInfo.chosenPlayers
         });
 
         nav(-2);
@@ -28,12 +36,17 @@ export const Play: React.FC<PlayProps> = ({addGameResultFunc}) => {
             <p>
                 Some data collection stuff...
             </p>
-            <Button 
-                variant="outline-primary"
-                onClick={endGame}
-            >
-                Done
-            </Button>
+            
+            {
+                setupInfo.chosenPlayers.map(x => (
+                    <Button
+                        variant="outline-primary"
+                        onClick={() => endGame(x)}
+                    >
+                        {x} Won
+                    </Button>
+                ))
+            }
         </>
     )
 };
