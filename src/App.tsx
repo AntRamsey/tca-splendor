@@ -19,6 +19,7 @@ import {
   , getPreviousPlayers
   , getShortestGameDuration
   , getLongestGameDuration
+  , getAverageGameDurationByPlayerCount
  } from './front-end-model'
 
 
@@ -103,6 +104,7 @@ const App = () => {
                 leaderboardData={calculateLeaderboard(results)}
                 shortestGameDuration={getShortestGameDuration(results)}
                 longestGameDuration={getLongestGameDuration(results)}
+                averageGameDurationData={getAverageGameDurationByPlayerCount(results)}
               />
             } 
           />

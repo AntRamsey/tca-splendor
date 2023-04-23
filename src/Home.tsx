@@ -11,12 +11,17 @@ interface HomeProps {
 		leaderboardData: LeaderboardPlayer[];
 		shortestGameDuration: number;
 		longestGameDuration: number;
+		averageGameDurationData: {
+			playerCount: number;
+			avgGameDuration: number;
+		}[];
 };
 
 export const Home: React.FC<HomeProps> = ({
 	leaderboardData
 	, shortestGameDuration
 	, longestGameDuration
+	, averageGameDurationData
 }) => {
 
 		console.log(leaderboardData);
@@ -82,6 +87,27 @@ export const Home: React.FC<HomeProps> = ({
 					<p>
 						{`${format(longestGameDuration)} longest game ever`}
 					</p>
+					{
+						averageGameDurationData.length > 0 &&
+						<Table striped bordered>
+							<thead>
+								<tr>
+									<th>Player Count</th>
+									<th>Average Duration</th>
+								</tr>
+							</thead>
+							<tbody>
+								{
+									averageGameDurationData.map(x => (
+										<tr>
+											<td>{x.playerCount}</td>
+											<td>{`${format(x.avgGameDuration)}`}</td>
+										</tr>
+									))
+								}
+							</tbody>
+						</Table>
+					}
 				</Card.Body>
 			</Card>
 		</>
