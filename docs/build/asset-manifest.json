@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/tca-splendor/static/css/main.756af292.css",
-    "main.js": "/tca-splendor/static/js/main.adafdf97.js",
+    "main.js": "/tca-splendor/static/js/main.c4c867ba.js",
     "static/js/787.236cf64a.chunk.js": "/tca-splendor/static/js/787.236cf64a.chunk.js",
     "index.html": "/tca-splendor/index.html",
     "main.756af292.css.map": "/tca-splendor/static/css/main.756af292.css.map",
-    "main.adafdf97.js.map": "/tca-splendor/static/js/main.adafdf97.js.map",
+    "main.c4c867ba.js.map": "/tca-splendor/static/js/main.c4c867ba.js.map",
     "787.236cf64a.chunk.js.map": "/tca-splendor/static/js/787.236cf64a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.756af292.css",
-    "static/js/main.adafdf97.js"
+    "static/js/main.c4c867ba.js"
   ]
 }
