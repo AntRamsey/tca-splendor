@@ -1,4 +1,5 @@
 import Button from 'react-bootstrap/Button';
+import Accordion from 'react-bootstrap/Accordion';
 import { useNavigate } from 'react-router-dom'
 import { GameResult, SetupInfo } from './front-end-model';
 import Form from 'react-bootstrap/Form';
@@ -48,6 +49,18 @@ export const Play: React.FC<PlayProps> = ({
                     onChange={(e) => setHappened(e.target.checked)}
                 />
             </p>
+
+            <Accordion flush>
+            {
+                setupInfo.chosenPlayers.map((player, index) => (
+                    <Accordion.Item eventKey={index.toString()} key={index}>
+                        <Accordion.Header>{player}</Accordion.Header>
+                        <Accordion.Body>
+                        </Accordion.Body>
+                    </Accordion.Item>
+                ))
+            }
+            </Accordion>
             
             {
                 setupInfo.chosenPlayers.map(x => (
