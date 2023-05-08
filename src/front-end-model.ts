@@ -8,7 +8,7 @@ export interface GameResult {
     start: string;
     end: string;
 
-    reallyCoolThingHappened: boolean;
+    mostCardsOwned: number;
 };
 
 export interface LeaderboardPlayer {
@@ -117,8 +117,6 @@ export const getAverageGameDurationByPlayerCount = (results: GameResult[]) => {
         );
 };
 
-export const getPercentGamesReallyCoolThingHappened = (results: GameResult[]) => {
-    return results.length
-    ? results.filter(x => x.reallyCoolThingHappened).length / results.length
-    : 0
-};
+export const getMostCardsEver = (results: GameResult[]) => Math.max(
+    ...results.map(x => x.mostCardsOwned)
+);

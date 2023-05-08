@@ -20,7 +20,7 @@ import {
   , getShortestGameDuration
   , getLongestGameDuration
   , getAverageGameDurationByPlayerCount
-  , getPercentGamesReallyCoolThingHappened
+  , getMostCardsEver
  } from './front-end-model'
 
 
@@ -30,49 +30,49 @@ const hardcodedGameResults: GameResult[] = [
       , players: ["Tom", "Taylor"]
       , start: "2023-04-22T11:38:23.442Z"
       , end: "2023-04-22T11:40:23.442Z"
-      , reallyCoolThingHappened: false
+      , mostCardsOwned: 12
   }
   , {
       winner: "Taylor"
       , players: ["Jack", "Taylor"]
       , start: "2023-04-22T11:38:23.442Z"
       , end: "2023-04-22T11:40:23.442Z"
-      , reallyCoolThingHappened: false
+      , mostCardsOwned: 11
   }
   , {
       winner: "Taylor"
       , players: ["Tom", "Taylor", "Jack"]
       , start: "2023-04-22T11:38:23.442Z"
       , end: "2023-04-22T11:40:23.442Z"
-      , reallyCoolThingHappened: false
+      , mostCardsOwned: 16
   }
   , {
       winner: "X"
       , players: ["X", "Joe"]
       , start: "2023-04-22T11:38:23.442Z"
       , end: "2023-04-22T11:40:23.442Z"
-      , reallyCoolThingHappened: false
+      , mostCardsOwned: 12
   }
   , {
       winner: "X"
       , players: ["X", "Joe"]
       , start: "2023-04-22T11:38:23.442Z"
       , end: "2023-04-22T11:40:23.442Z"
-      , reallyCoolThingHappened: false
+      , mostCardsOwned: 9
   }
   , {
       winner: "Joe"
       , players: ["X", "Joe"]
       , start: "2023-04-22T11:38:23.442Z"
       , end: "2023-04-22T11:40:23.442Z"
-      , reallyCoolThingHappened: false
+      , mostCardsOwned: 10
   }
   , {
       winner: "Jack"
       , players: ["X", "Joe", "Jack"]
       , start: "2023-04-22T11:38:23.442Z"
       , end: "2023-04-22T11:48:23.442Z"
-      , reallyCoolThingHappened: false
+      , mostCardsOwned: 15
   }
 ];
 
@@ -113,7 +113,7 @@ const App = () => {
                 shortestGameDuration={getShortestGameDuration(results)}
                 longestGameDuration={getLongestGameDuration(results)}
                 averageGameDurationData={getAverageGameDurationByPlayerCount(results)}
-                reallyCoolThingHappenedPercent={getPercentGamesReallyCoolThingHappened(results)}
+                mostCardsEver={getMostCardsEver(results)}
               />
             } 
           />
