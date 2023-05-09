@@ -27,65 +27,11 @@ import {
   , getMostCardsEver
  } from './front-end-model'
 
-
-const hardcodedGameResults: GameResult[] = [
-  {
-      winner: "Tom"
-      , players: ["Tom", "Taylor"]
-      , start: "2023-04-22T11:38:23.442Z"
-      , end: "2023-04-22T11:40:23.442Z"
-      , mostCardsOwned: 12
-  }
-  , {
-      winner: "Taylor"
-      , players: ["Jack", "Taylor"]
-      , start: "2023-04-22T11:38:23.442Z"
-      , end: "2023-04-22T11:40:23.442Z"
-      , mostCardsOwned: 11
-  }
-  , {
-      winner: "Taylor"
-      , players: ["Tom", "Taylor", "Jack"]
-      , start: "2023-04-22T11:38:23.442Z"
-      , end: "2023-04-22T11:40:23.442Z"
-      , mostCardsOwned: 16
-  }
-  , {
-      winner: "X"
-      , players: ["X", "Joe"]
-      , start: "2023-04-22T11:38:23.442Z"
-      , end: "2023-04-22T11:40:23.442Z"
-      , mostCardsOwned: 12
-  }
-  , {
-      winner: "X"
-      , players: ["X", "Joe"]
-      , start: "2023-04-22T11:38:23.442Z"
-      , end: "2023-04-22T11:40:23.442Z"
-      , mostCardsOwned: 9
-  }
-  , {
-      winner: "Joe"
-      , players: ["X", "Joe"]
-      , start: "2023-04-22T11:38:23.442Z"
-      , end: "2023-04-22T11:40:23.442Z"
-      , mostCardsOwned: 10
-  }
-  , {
-      winner: "Jack"
-      , players: ["X", "Joe", "Jack"]
-      , start: "2023-04-22T11:38:23.442Z"
-      , end: "2023-04-22T11:48:23.442Z"
-      , mostCardsOwned: 15
-  }
-];
-
-
 const App = () => {
 
   //State Hooks...
 
-  const [results, setGameResults] = useState(hardcodedGameResults);
+  const [results, setGameResults] = useState<GameResult[]>([]);
 
   const [setupInfo, setSetupInfo] = useState<SetupInfo>({
     start: ""
@@ -148,10 +94,9 @@ const App = () => {
       </h2>
 
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-        <Form.Label>New player</Form.Label>
         <Form.Control 
             type="text" 
-            placeholder="Enter a new player name"
+            placeholder="Enter your email to save..."
             value={emailKey}
             onChange={(e) => setEmailKey(e.target.value)}
         />

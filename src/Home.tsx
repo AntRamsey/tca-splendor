@@ -84,10 +84,10 @@ export const Home: React.FC<HomeProps> = ({
 				</Card.Header>
 				<Card.Body>
 					<p>
-						{`${format(shortestGameDuration)} shortest game ever`}
+						{`Shortest game ever: ${Number.isInteger(shortestGameDuration) ? format(shortestGameDuration) : "n/a"}`}
 					</p>
 					<p>
-						{`${format(longestGameDuration)} longest game ever`}
+						{`Longest game ever: ${Number.isInteger(longestGameDuration) ? format(longestGameDuration) : "n/a"}`}
 					</p>
 					{
 						averageGameDurationData.length > 0 &&
@@ -117,7 +117,7 @@ export const Home: React.FC<HomeProps> = ({
 					Most Cards Ever Held
 				</Card.Header>
 				<Card.Body>
-					{mostCardsEver}
+					{Number.isInteger(mostCardsEver) ? mostCardsEver : "n/a"}
 				</Card.Body>
 			</Card>
 		</>
