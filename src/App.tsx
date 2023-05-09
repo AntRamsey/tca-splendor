@@ -130,9 +130,10 @@ const App = () => {
       </h2>
 
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+        <Form.Label>Enter your email to save...</Form.Label>
         <Form.Control 
             type="text" 
-            placeholder="Enter your email to save..."
+            placeholder="example@tca.com"
             value={emailKeyInput}
             onChange={(e) => setEmailKeyInput(e.target.value)}
         />
