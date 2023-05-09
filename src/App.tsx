@@ -27,6 +27,8 @@ import {
   , getMostCardsEver
  } from './front-end-model'
 
+ import { saveGameToCloud, loadGamesFromCloud } from './tca-cloud-api';
+
 const App = () => {
 
   //State Hooks...
@@ -66,6 +68,17 @@ const App = () => {
   //Helper Functions...
   
   const addGameResult = (r: GameResult) => {
+
+    // Save the game result to the cloud
+    saveGameToCloud(
+      emailKeySaved
+      , "tca-splendor"
+      , r.end
+      , r
+    );
+
+
+    //Optimistically update the lifted app state
     setGameResults([
       ...results
       , r
