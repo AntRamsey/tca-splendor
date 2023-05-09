@@ -59,15 +59,6 @@ export const Play: React.FC<PlayProps> = ({
             <h2>
                 Play
             </h2>
-            <p>
-                <Form.Check
-                    inline
-                    label="Really cool thing happened"
-                    type='switch'
-                    checked={happened}
-                    onChange={(e) => setHappened(e.target.checked)}
-                />
-            </p>
 
             <Accordion flush>
                 {setupInfo.chosenPlayers.map((player, index) => (
