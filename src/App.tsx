@@ -48,21 +48,40 @@ const App = () => {
 
   useEffect(
     () => {
-      const loadEmailKey = async () => {
+      const loadEmailKeyAndGameResults = async () => {
         try {
 
           const ek = String(await localforage.getItem("emailKey")) ?? "";
-          setEmailKeyInput(ek);
-          setEmailKeySaved(ek);
+
+          if (ek.length > 0) {
+            
+            const resultsFromCloud = await loadGamesFromCloud(
+              ek
+              , "tca-splendor"
+            );
+
+            if (!ignore) {
+              setGameResults(resultsFromCloud);
+            }
+          }
+
+          if (!ignore) {
+            setEmailKeyInput(ek);
+            setEmailKeySaved(ek);
+          }
         }
         catch (err) {
           console.error(err);
         }
       };
 
-      loadEmailKey();
+      let ignore = false;
+      loadEmailKeyAndGameResults();
+      return () => {
+        ignore = true;
+      };
     }
-    , []
+    , [emailKeySaved]
   );
 
   //Helper Functions...
@@ -102,7 +121,7 @@ const App = () => {
   // JSX...
 
   return (
-    <div className="App m-3">
+    <div className="App mx-5 my-3">
       <h1>
         TCA Splendor
       </h1>

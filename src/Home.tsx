@@ -26,7 +26,6 @@ export const Home: React.FC<HomeProps> = ({
 	, mostCardsEver
 }) => {
 
-		console.log(leaderboardData);
 
 		const nav = useNavigate();
 
