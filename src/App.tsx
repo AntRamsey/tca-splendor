@@ -1,6 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import localforage from 'localforage';
+
 
 import { Home } from './Home';
 import { Setup } from './Setup';
@@ -79,6 +83,8 @@ const hardcodedGameResults: GameResult[] = [
 
 const App = () => {
 
+  //State Hooks...
+
   const [results, setGameResults] = useState(hardcodedGameResults);
 
   const [setupInfo, setSetupInfo] = useState<SetupInfo>({
@@ -87,12 +93,50 @@ const App = () => {
     , scoreToWin: 15
   });
 
+  const [emailKey, setEmailKey] = useState('');
+
+  //useEffect Hook...
+
+  useEffect(
+    () => {
+      const loadEmailKey = async () => {
+        try {
+          setEmailKey(
+            await localforage.getItem("emailKey") ?? ""
+          );
+        }
+        catch (err) {
+          console.error(err);
+        }
+      };
+
+      loadEmailKey();
+    }
+    , []
+  );
+
+  //Helper Functions...
+  
   const addGameResult = (r: GameResult) => {
     setGameResults([
       ...results
       , r
     ]);
   };
+
+  const saveEmailKey = async () => {
+    try {
+      await localforage.setItem(
+        "emailKey"
+        , emailKey
+      );
+    }
+    catch (err) {
+      console.error(err);
+    }
+  }
+
+  // JSX...
 
   return (
     <div className="App m-3">
@@ -102,7 +146,24 @@ const App = () => {
       <h2>
         Companion App
       </h2>
+
+      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+        <Form.Label>New player</Form.Label>
+        <Form.Control 
+            type="text" 
+            placeholder="Enter a new player name"
+            value={emailKey}
+            onChange={(e) => setEmailKey(e.target.value)}
+        />
+        <Button
+            onClick={saveEmailKey}
+        >
+            Save
+        </Button>
+      </Form.Group>
+
       <hr />
+
       <HashRouter>
         <Routes>
           <Route 
